@@ -73,7 +73,6 @@ export default BmiCalculator;
 const styles = StyleSheet.create({
   container: {
     padding: 22,
-
     alignItems: "center",
   },
   textInput: {

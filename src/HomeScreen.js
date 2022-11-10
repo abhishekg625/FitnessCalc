@@ -6,13 +6,13 @@ import { Ionicons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const HomeScreen = ({ navigation }) => {
-  const Submit1 = () => {
+  const onBMRClick = () => {
     navigation.navigate("BmrCalculator");
   };
-  const Submit2 = () => {
+  const onBodyFatClick = () => {
     navigation.navigate("BodyfatCalculator");
   };
-  const Submit3 = () => {
+  const onMassIndexClick = () => {
     navigation.navigate("BmiCalculator");
   };
 
@@ -21,19 +21,19 @@ const HomeScreen = ({ navigation }) => {
       <Text style={styles.headerText}>Fitness Calculator</Text>
       <View style={styles.buttonContainer}>
         <TouchableOpacity
-          onPress={() => Submit1()}
+          onPress={() => onBMRClick()}
           style={styles.appButtonContainer}
         >
           <Text style={styles.calText}>BMR Calculator</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => Submit2()}
+          onPress={() => onBodyFatClick()}
           style={styles.appButtonContainer}
         >
           <Text style={styles.calText}>Body Fat Calculator</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => Submit3()}
+          onPress={() => onMassIndexClick()}
           style={styles.appButtonContainer}
         >
           <Text style={styles.calText}>Body Mass Index</Text>
@@ -78,12 +78,14 @@ export default HomeScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#f2c9f0",
   },
   headerText: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     fontSize: 25,
     color: "#fc0390",
     fontWeight: "bold",
@@ -93,15 +95,14 @@ const styles = StyleSheet.create({
   },
 
   appButtonContainer: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     elevation: 8,
     backgroundColor: "yellow",
     borderRadius: 10,
-    paddingVertical: 40,
-    paddingHorizontal: 15,
-    marginTop: 10,
-    margin: 10,
-    marginLeft: 40,
-    marginRight: 40,
+    padding: 30,
+    margin: 15,
   },
   mainText: {
     fontSize: 18,
@@ -110,14 +111,14 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     textTransform: "uppercase",
   },
-  mainImage: {
-    height: 120,
-    width: 200,
-  },
+
   calText: {
     fontWeight: "bold",
   },
   buttonContainer: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     width: 260,
     height: 390,
     backgroundColor: "white",
@@ -133,6 +134,9 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   buttonContainer2: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     width: 250,
     height: 85,
     backgroundColor: "white",
@@ -143,7 +147,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 3,
     shadowOffset: {
-      height: 0,
+      height: 1,
       width: 0,
     },
     elevation: 2,

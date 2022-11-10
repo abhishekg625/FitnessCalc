@@ -11,8 +11,7 @@ const BmrClaculator = ({ navigation }) => {
   const [height, setHeight] = useState(DEFAULT_VALUE.height);
   const [age, setAge] = useState(DEFAULT_VALUE.age);
   const [result, setResult] = useState(0);
-  const [resultText, setResultText] = useState("");
-  const [fatPercentage, setFatePersentage] = useState(0);
+  const [fatPercentage, setFatePersentage] = useState("");
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
   const [items, setItems] = useState([
@@ -42,7 +41,6 @@ const BmrClaculator = ({ navigation }) => {
       setResult(result);
     } else {
       setResult(0);
-      setResultText("");
     }
   };
   return (
@@ -103,10 +101,15 @@ const BmrClaculator = ({ navigation }) => {
           <Text> Calculate</Text>
         </TouchableOpacity>
       </View>
-      <View style={{ justifyContent: "center", alignItems: "center" }}>
+      <View
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <View style={styles.buttonContainer2}>
           <Text style={styles.result}>{result}</Text>
-          <Text style={[styles.result, { fontSize: 35 }]}>{resultText}</Text>
         </View>
       </View>
     </View>
@@ -135,14 +138,13 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   calculateButton: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     backgroundColor: "#ff5c5c",
     borderRadius: 10,
     padding: 10,
-    alignItems: "center",
-    justifyContent: "center",
     margin: 10,
-    marginLeft: 40,
-    marginRight: 40,
   },
 
   result: {
@@ -167,12 +169,14 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   buttonContainer2: {
-    minWidth: 200,
-    minHeight: 130,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+
     backgroundColor: "white",
     borderRadius: 10,
-    padding: 5,
-    marginTop: 5,
+    padding: 2,
+    margin: 10,
     shadowColor: "black",
     shadowOpacity: 0.5,
     shadowRadius: 3,

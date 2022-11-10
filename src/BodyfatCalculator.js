@@ -18,7 +18,6 @@ const BodyfatCalculator = () => {
   const [waist, setWaist] = useState(DEFAULT_VALUE.waist);
   const [hipSize, setHipSize] = useState(DEFAULT_VALUE.hipSize);
   const [result, setResult] = useState(0);
-  const [resultText, setResultText] = useState("");
 
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
@@ -50,7 +49,6 @@ const BodyfatCalculator = () => {
       setResult(result);
     } else {
       setResult(0);
-      setResultText("");
     }
   };
 
@@ -90,7 +88,7 @@ const BodyfatCalculator = () => {
           label="weight"
           value={height}
           keyboardType="numeric"
-          onChangeText={(height) => setHeight(height)}
+          onChangeText={(height) => setHeightValue(height)}
         />
         <Text style={styles.text}>Hip Size (cm) </Text>
         <TextInput
@@ -108,10 +106,15 @@ const BodyfatCalculator = () => {
           <Text> Calculate</Text>
         </TouchableOpacity>
       </View>
-      <View style={{ alignItems: "center" }}>
+      <View
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <View style={styles.buttonContainer2}>
           <Text style={styles.result}>{result}</Text>
-          <Text style={[styles.result, { fontSize: 35 }]}>{resultText}</Text>
         </View>
       </View>
     </View>
@@ -122,8 +125,6 @@ export default BodyfatCalculator;
 
 const styles = StyleSheet.create({
   container: {
-    //padding: 10,
-    //width: width - 20,
     backgroundColor: "#edf0e9",
   },
   textInput: {
@@ -141,14 +142,13 @@ const styles = StyleSheet.create({
     margin: 5,
   },
   calculateButton: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     backgroundColor: "#ff5c5c",
     borderRadius: 10,
     padding: 10,
-    alignItems: "center",
-    justifyContent: "center",
     margin: 30,
-    marginLeft: 40,
-    marginRight: 40,
   },
 
   result: {
@@ -173,12 +173,15 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   buttonContainer2: {
-    minWidth: 200,
-    minHeight: 120,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: 200,
+    height: 120,
     backgroundColor: "white",
     borderRadius: 10,
     padding: 5,
-    marginTop: 5,
+    margin: 5,
     shadowColor: "black",
     shadowOpacity: 0.5,
     shadowRadius: 3,
