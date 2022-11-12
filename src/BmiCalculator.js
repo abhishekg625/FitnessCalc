@@ -121,8 +121,11 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   buttonContainer2: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     minWidth: 300,
-    minHeight: 220,
+    minHeight: 120,
     backgroundColor: "white",
     borderRadius: 10,
     padding: 5,

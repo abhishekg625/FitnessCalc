@@ -20,7 +20,7 @@ const BodyfatCalculator = () => {
   const [result, setResult] = useState(0);
 
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(null);
+  const [value, setValue] = useState("");
   const [items, setItems] = useState([
     { label: "Male", value: "male" },
     { label: "Female", value: "female" },

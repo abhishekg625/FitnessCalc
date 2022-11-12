@@ -13,7 +13,7 @@ const BmrClaculator = ({ navigation }) => {
   const [result, setResult] = useState(0);
   const [fatPercentage, setFatePersentage] = useState("");
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(null);
+  const [value, setValue] = useState("");
   const [items, setItems] = useState([
     { label: "Male", value: "male" },
     { label: "Female", value: "female" },
@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
   result: {
     alignSelf: "center",
     color: "gray",
-    fontSize: 65,
+    fontSize: 45,
     padding: 15,
   },
   buttonContainer: {
@@ -172,7 +172,8 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-
+    height: 120,
+    width: 160,
     backgroundColor: "white",
     borderRadius: 10,
     padding: 2,
