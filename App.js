@@ -1,10 +1,10 @@
-import { StyleSheet } from "react-native";
+import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./src/HomeScreen";
 import BmrClaculator from "./src/BmrClaculator";
-import BodyfatCalculator from "./src/BodyfatCalculator";
-import BmiCalculator from "./src/BmiCalculator";
+import BodyfatCalculator from "./src/BodyFat/BodyfatCalculator";
+import BmiCalculator from "./src/Bmi/BmiCalculator";
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +19,13 @@ export default function App() {
             title: "Fitness Buddy",
             headerTitleAlign: "center",
             headerShown: true,
+            headerStyle: {
+              backgroundColor: "black",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
           }}
         />
         <Stack.Screen
@@ -28,6 +35,13 @@ export default function App() {
             title: "BMR Calculator",
             headerTitleAlign: "center",
             headerShown: true,
+            headerStyle: {
+              backgroundColor: "black",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
           }}
         />
         <Stack.Screen
@@ -37,6 +51,13 @@ export default function App() {
             title: "Body Fat Calculator",
             headerTitleAlign: "center",
             headerShown: true,
+            headerStyle: {
+              backgroundColor: "black",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
           }}
         />
         <Stack.Screen
@@ -46,17 +67,16 @@ export default function App() {
             title: "Body Mass Index",
             headerTitleAlign: "center",
             headerShown: true,
+            headerStyle: {
+              backgroundColor: "black",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
           }}
         />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
