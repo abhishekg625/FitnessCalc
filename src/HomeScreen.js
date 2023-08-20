@@ -1,9 +1,9 @@
 import { Text, View, Linking, TouchableOpacity } from "react-native";
 import React from "react";
 import styles from "./HomeStyles";
-// import { FontAwesome5 } from "@expo/vector-icons";
-// import { Ionicons } from "@expo/vector-icons";
-// import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const HomeScreen = ({ navigation }) => {
   const onBMRClick = () => {
@@ -64,12 +64,12 @@ const HomeScreen = ({ navigation }) => {
           <Text style={styles.calText}>Know About Body Mass Index </Text>
         </TouchableOpacity>
       </View>
-      {/* <View style={{ flexDirection: "row", marginTop: 25 }}>
+      <View style={{ flexDirection: "row", marginTop: 25 }}>
         <FontAwesome5 name="dumbbell" size={25} color="black" />
         <Ionicons name="body" size={25} color="black" />
         <MaterialCommunityIcons name="jump-rope" size={25} color="black" />
         <MaterialCommunityIcons name="dumbbell" size={25} color="black" />
-      </View> */}
+      </View>
     </View>
   );
 };

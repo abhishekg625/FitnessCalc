@@ -8,8 +8,10 @@ import {
 import React, { useState } from "react";
 import styles from "./BmiStyle";
 import { DEFAULT_VALUE } from "../const";
+import RNModal from "react-native-modal";
 
 const BmiCalculator = () => {
+  const [show, setShow] = useState(false);
   const [weight, setWeight] = useState(DEFAULT_VALUE.weight);
   const [height, setHeight] = useState(DEFAULT_VALUE.height);
   const [result, setResult] = useState(0);
@@ -54,15 +56,36 @@ const BmiCalculator = () => {
           onChangeText={(height) => setHeight(height)}
         />
 
-        <TouchableOpacity style={styles.calculateButton} onPress={Calculate}>
+        <TouchableOpacity
+          style={styles.calculateButton}
+          onPress={() => {
+            setShow(true);
+            Calculate();
+          }}
+        >
           <Text> Calculate</Text>
         </TouchableOpacity>
-      </View>
-      <View style={{ alignItems: "center" }}>
-        <View style={styles.buttonContainer2}>
-          <Text style={styles.result}>{result}</Text>
-          <Text style={[styles.result, { fontSize: 35 }]}>{resultText}</Text>
-        </View>
+
+        <RNModal isVisible={show} animationIn="zoomIn" animationOut="zoomOut">
+          <View style={styles.modalContainer}>
+            <View style={{ alignItems: "center" }}>
+              <View style={styles.buttonContainer2}>
+                <Text style={styles.result}>{result}</Text>
+                <Text style={[styles.result, { fontSize: 35 }]}>
+                  {resultText}
+                </Text>
+              </View>
+              <TouchableOpacity
+                style={styles.calculateButton}
+                onPress={() => {
+                  setShow(false);
+                }}
+              >
+                <Text> Close</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </RNModal>
       </View>
     </View>
   );

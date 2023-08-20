@@ -1,7 +1,6 @@
 export default {
   container: {
     padding: 22,
-    backgroundColor: "#edf0e9",
   },
   textInput: {
     borderColor: "gray",

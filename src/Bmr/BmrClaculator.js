@@ -2,10 +2,13 @@ import { Text, View } from "react-native";
 import React, { useState } from "react";
 import { TextInput, TouchableOpacity } from "react-native";
 import styles from "./BmrStyle";
+import Styles from "../Bmi/BmiStyle";
 import DropDownPicker from "react-native-dropdown-picker";
-import { DEFAULT_VALUE } from "./const";
+import RNModal from "react-native-modal";
+import { DEFAULT_VALUE } from "../const";
 
 const BmrClaculator = ({ navigation }) => {
+  const [show, setShow] = useState(false);
   const [weight, setWeight] = useState(DEFAULT_VALUE.weight);
   const [height, setHeight] = useState(DEFAULT_VALUE.height);
   const [age, setAge] = useState(DEFAULT_VALUE.age);
@@ -21,23 +24,21 @@ const BmrClaculator = ({ navigation }) => {
   const Submit = () => {
     navigation.navigate("BodyfatCalculator");
   };
+  const maleResult = (
+    (88.362 + 13.397 * weight + 4.799 * height - 5.677 * age) /
+    100
+  ).toFixed(2);
+  const femaleResult = (
+    (447.593 + 9.247 * weight + 3.098 * height - 4.33 * age) /
+    100
+  ).toFixed(2);
   const Calculate = () => {
-    // Men: BMR = 88.362 + (13.397 x weight in kg) + (4.799 x height in cm) – (5.677 x age in years)
-    // Women: BMR = 447.593 + (9.247 x weight in kg) + (3.098 x height in cm) – (4.330 x age in years)
     if (value === "male") {
-      const result = (
-        (88.362 + 13.397 * weight + 4.799 * height - 5.677 * age) /
-        100
-      ).toFixed(2);
-      console.log(result);
-      setResult(result);
+      console.log(maleResult);
+      setResult(maleResult);
     } else if (value === "female") {
-      const result = (
-        (447.593 + 9.247 * weight + 3.098 * height - 4.33 * age) /
-        100
-      ).toFixed(2);
-      console.log(result);
-      setResult(result);
+      console.log(femaleResult);
+      setResult(femaleResult);
     } else {
       setResult(0);
     }
@@ -46,15 +47,32 @@ const BmrClaculator = ({ navigation }) => {
     <View style={styles.container}>
       <View style={styles.buttonContainer}>
         <Text style={styles.text}>Gender </Text>
-        <DropDownPicker
-          open={open}
-          value={value}
-          items={items}
-          setOpen={setOpen}
-          setValue={setValue}
-          setItems={setItems}
-        />
-
+        <View>
+          <DropDownPicker
+            placeholder="Select Gender"
+            style={{
+              border: "solid 1px black",
+              borderRadius: 8,
+              display: "flex",
+              flexDirection: "row",
+              padding: 4,
+            }}
+            dropDownContainerStyle={{
+              backgroundColor: "#dfdfdf",
+            }}
+            itemStyle={{
+              backgroundColor: "red",
+              flexDirection: "row",
+              display: "flex",
+            }}
+            open={open}
+            value={value}
+            items={items}
+            setOpen={setOpen}
+            setValue={setValue}
+            setItems={setItems}
+          />
+        </View>
         <Text style={styles.text}>Age </Text>
         <TextInput
           style={styles.textInput}
@@ -91,25 +109,42 @@ const BmrClaculator = ({ navigation }) => {
         />
 
         <TouchableOpacity style={styles.fatButton} onPress={() => Submit()}>
-          <Text style={styles.text}>I don't know my fat percentage</Text>
+          <Text style={{ ...styles.text, color: "green" }}>
+            I don't know my fat percentage
+          </Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.calculateButton}
-          onPress={() => Calculate()}
+          onPress={() => {
+            setShow(true);
+            Calculate();
+          }}
         >
           <Text> Calculate</Text>
         </TouchableOpacity>
-      </View>
-      <View
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <View style={styles.buttonContainer2}>
-          <Text style={styles.result}>{result}</Text>
-        </View>
+        <RNModal isVisible={show} animationIn="zoomIn" animationOut="zoomOut">
+          <View style={Styles.modalContainer}>
+            <View
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <View style={styles.buttonContainer2}>
+                <Text style={styles.result}>{result}</Text>
+              </View>
+              <TouchableOpacity
+                style={styles.calculateButton}
+                onPress={() => {
+                  setShow(false);
+                }}
+              >
+                <Text> Close</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </RNModal>
       </View>
     </View>
   );

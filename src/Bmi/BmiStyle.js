@@ -1,6 +1,7 @@
 export default {
   container: {
-    padding: 22,
+    display: "flex",
+    justifyContent: "center",
     alignItems: "center",
   },
   textInput: {
@@ -66,5 +67,19 @@ export default {
       width: 0,
     },
     elevation: 2,
+  },
+  modalContainer: {
+    backgroundColor: "white",
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    paddingVertical: 14,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
 };

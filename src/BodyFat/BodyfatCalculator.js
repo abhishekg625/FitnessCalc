@@ -7,8 +7,9 @@ import {
   Dimensions,
 } from "react-native";
 import styles from "./BodyfatStyle";
+import Styles from "../Bmi/BmiStyle";
 import { DEFAULT_VALUE } from "../const";
-
+import RNModal from "react-native-modal";
 import DropDownPicker from "react-native-dropdown-picker";
 
 const BodyfatCalculator = () => {
@@ -17,7 +18,7 @@ const BodyfatCalculator = () => {
   const [waist, setWaist] = useState(DEFAULT_VALUE.waist);
   const [hipSize, setHipSize] = useState(DEFAULT_VALUE.hipSize);
   const [result, setResult] = useState(0);
-
+  const [show, setShow] = useState(false);
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
   const [items, setItems] = useState([
@@ -55,16 +56,32 @@ const BodyfatCalculator = () => {
     <View style={styles.container}>
       <View style={styles.buttonContainer}>
         <Text style={styles.text}>Gender </Text>
-
-        <DropDownPicker
-          open={open}
-          value={value}
-          items={items}
-          setOpen={setOpen}
-          setValue={setValue}
-          setItems={setItems}
-        />
-
+        <View>
+          <DropDownPicker
+            placeholder="Select Gender"
+            style={{
+              border: "solid 1px black",
+              borderRadius: 8,
+              display: "flex",
+              flexDirection: "row",
+              padding: 4,
+            }}
+            itemStyle={{
+              backgroundColor: "red",
+              flexDirection: "row",
+              display: "flex",
+            }}
+            dropDownContainerStyle={{
+              backgroundColor: "#dfdfdf",
+            }}
+            open={open}
+            value={value}
+            items={items}
+            setOpen={setOpen}
+            setValue={setValue}
+            setItems={setItems}
+          />
+        </View>
         <Text style={styles.text}>Waist (cm) </Text>
         <TextInput
           style={styles.textInput}
@@ -85,7 +102,7 @@ const BodyfatCalculator = () => {
         <TextInput
           style={styles.textInput}
           label="weight"
-          value={height}
+          value={heightValue}
           keyboardType="numeric"
           onChangeText={(height) => setHeightValue(height)}
         />
@@ -100,21 +117,36 @@ const BodyfatCalculator = () => {
 
         <TouchableOpacity
           style={styles.calculateButton}
-          onPress={() => Calculate()}
+          onPress={() => {
+            setShow(true);
+            Calculate();
+          }}
         >
           <Text> Calculate</Text>
         </TouchableOpacity>
-      </View>
-      <View
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <View style={styles.buttonContainer2}>
-          <Text style={styles.result}>{result}</Text>
-        </View>
+        <RNModal isVisible={show} animationIn="zoomIn" animationOut="zoomOut">
+          <View style={Styles.modalContainer}>
+            <View
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <View style={styles.buttonContainer2}>
+                <Text style={styles.result}>{result}</Text>
+              </View>
+              <TouchableOpacity
+                style={styles.calculateButton}
+                onPress={() => {
+                  setShow(false);
+                }}
+              >
+                <Text> Close</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </RNModal>
       </View>
     </View>
   );
