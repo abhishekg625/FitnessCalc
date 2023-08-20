@@ -1,15 +1,10 @@
 import React, { useState } from "react";
-import {
-  Text,
-  View,
-  TouchableOpacity,
-  TextInput,
-  Dimensions,
-} from "react-native";
+import { Text, View, TouchableOpacity, TextInput, Image } from "react-native";
 import styles from "./BodyfatStyle";
 import Styles from "../Bmi/BmiStyle";
 import { DEFAULT_VALUE } from "../const";
 import RNModal from "react-native-modal";
+import FITNESS from "../assets/image1.png";
 import DropDownPicker from "react-native-dropdown-picker";
 
 const BodyfatCalculator = () => {
@@ -25,7 +20,6 @@ const BodyfatCalculator = () => {
     { label: "Male", value: "male" },
     { label: "Female", value: "female" },
   ]);
-  const { height, width } = Dimensions.get("window");
 
   const Calculate = () => {
     if (value === "male") {
@@ -55,6 +49,19 @@ const BodyfatCalculator = () => {
   return (
     <View style={styles.container}>
       <View style={styles.buttonContainer}>
+        <View
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Image
+            source={FITNESS}
+            alt="fitness"
+            style={{ height: 100, width: 100 }}
+          />
+        </View>
         <Text style={styles.text}>Gender </Text>
         <View>
           <DropDownPicker

@@ -4,10 +4,12 @@ import {
   TextInput,
   TouchableOpacity,
   Dimensions,
+  Image,
 } from "react-native";
 import React, { useState } from "react";
 import styles from "./BmiStyle";
 import { DEFAULT_VALUE } from "../const";
+import FITNESS from "../assets/img1.png";
 import RNModal from "react-native-modal";
 
 const BmiCalculator = () => {
@@ -39,6 +41,21 @@ const BmiCalculator = () => {
   return (
     <View style={styles.container}>
       <View style={styles.buttonContainer}>
+        <View
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: 10,
+            marginBottom: 20,
+          }}
+        >
+          <Image
+            source={FITNESS}
+            alt="fitness"
+            style={{ height: 200, width: "90%" }}
+          />
+        </View>
         <Text style={styles.text}> Weight (kg) </Text>
         <TextInput
           style={styles.textInput}

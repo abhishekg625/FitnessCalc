@@ -35,8 +35,8 @@ export default {
     padding: 15,
   },
   buttonContainer: {
-    width: 300,
-    height: 240,
+    width: "100%",
+    height: "100%",
     backgroundColor: "white",
     borderRadius: 10,
     padding: 12,

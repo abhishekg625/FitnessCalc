@@ -1,10 +1,11 @@
-import { Text, View } from "react-native";
+import { Text, View, Image } from "react-native";
 import React, { useState } from "react";
 import { TextInput, TouchableOpacity } from "react-native";
 import styles from "./BmrStyle";
 import Styles from "../Bmi/BmiStyle";
 import DropDownPicker from "react-native-dropdown-picker";
 import RNModal from "react-native-modal";
+import FITNESS from "../assets/image2.png";
 import { DEFAULT_VALUE } from "../const";
 
 const BmrClaculator = ({ navigation }) => {
@@ -46,6 +47,19 @@ const BmrClaculator = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.buttonContainer}>
+        <View
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Image
+            source={FITNESS}
+            alt="fitness"
+            style={{ height: 100, width: 100 }}
+          />
+        </View>
         <Text style={styles.text}>Gender </Text>
         <View>
           <DropDownPicker

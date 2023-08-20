@@ -33,8 +33,8 @@ export default {
     padding: 15,
   },
   buttonContainer: {
-    minWidth: 300,
-    minHeight: 500,
+    width: "100%",
+    height: "100%",
     backgroundColor: "white",
     borderRadius: 10,
     padding: 12,
